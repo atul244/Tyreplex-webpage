@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TyrePlex Replica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-weight: bold;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .navbar .menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar .menu li {
+            margin: 0 15px;
+        }
+
+        .navbar .menu li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .navbar .login {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .dealer-info {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #fff;
+            margin: 20px;
+        }
+
+        .dealer-details h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .dealer-details p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .get-directions {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dealer-images {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 30px;
+}
+
+.dealer-images img {
+    width: 200px;
+    height: 150px;
+    margin: 10px 0;
+}
+
+
+          .payment-modes,  .contact {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            text-align: left;
+        }
+
+       
+
+        .deals {
+    padding: 20px;
+}
+
+.brands {
+    display: flex;
+    gap: 10px; /* Space between cards */
+    overflow-x: auto; /* Enables horizontal scrolling */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer and Edge */
+    height: 155px;
+}
+
+.brands::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
+
+.brand {
+    flex: 0 0 80px; /* Card width */
+    height: 80px; /* Card height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd; /* Optional border */
+    border-radius: 8px; /* Optional rounded corners */
+    overflow: hidden; /* Ensures images don't overflow */
+    background-color: #f9f9f9; /* Optional background color */
+}
+
+.brand img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensures the image fits within the card */
+}
+
+        .services {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+}
+
+.services h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.service-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 45%;
+    display: inline-block;
+    text-align: center;
+    margin-right: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.service-card img {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.service-title {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.book-now {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.book-now:hover {
+    background-color: #e60000;
+}
+
+.tyres {
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.tyres h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.tyre-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filter {
+    display: flex;
+    align-items: center;
+}
+
+.filter label {
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.filter select {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.advanced-filter {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.advanced-filter:hover {
+    text-decoration: underline;
+}
+
+.tyre-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 20px;
+}
+
+.tyre-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tyre-info {
+    max-width: 60%;
+}
+
+.tyre-brand {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4b0082;
+    margin-bottom: 5px;
+}
+
+.tyre-model {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.tyre-size, .tyre-price, .tyre-reviews, .tyre-offer, .tyre-type {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.review-rating {
+    color: #4CAF50;
+}
+
+.tyre-image {
+    position: relative;
+}
+
+.tyre-image img {
+    max-width: 200px;
+    position: relative;
+    left: 35px;
+
+}
+
+.warranty-badge {
+    position: absolute;
+    top: -42px;
+    right: -15px;
+    background-color: #f7c10c;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.view-more {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.view-more:hover {
+    background-color: #0056b3;
+}
+
+
+      
+
+footer {
+    background-color: #f5f5f5;
+    padding: 20px;
+    text-align: center;
+}
+
+.payment-modes ul {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.payment-modes li {
+    position: relative;
+    padding-left: 25px; /* Space for the checkmark */
+    margin: 10px 20px;
+    width: calc(33.333% - 40px); /* 3 items per row, accounting for margin */
+}
+
+.payment-modes li::before {
+    content: '\2713'; /* Unicode for checkmark */
+    color: green;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+}
+
+.payment-modes ul li {
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+.contact {
+    background-color: #ffea92;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1155px; /* Adjust this value as needed */
+}
+
+.text-input {
+    flex: 1;
+}
+
+.text-input h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    line-height: 60px;
+}
+
+.text-input input[type="text"] {
+    padding: 10px;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.text-input button {
+    padding: 10px 20px;
+    background-color: #f1c40f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.text-input button:hover {
+    background-color: #e1b30f;
+}
+
+.video-container {
+    flex: 1;
+    text-align: right;
+}
+
+.video-container video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+.footer-info {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #777;
+}
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo-social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.footer-logo-social h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-logo-social h2 span {
+    color: #e74c3c; /* Change this to the brand color of 'Plex' */
+}
+
+.social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.social-icons img {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: #333;
+    text-decoration: none;
+    margin: 5px 15px;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+        .reviews {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.review-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    width: 30%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.review-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.review-header h3 {
+    font-size: 18px;
+    margin: 0;
+    color: #333;
+}
+
+.review-card p {
+    color: #555;
+    line-height: 1.5;
+    font-size: 14px;
+    margin: 0;
+}
+/* Tablet View */
+@media (max-width: 768px) {
+    body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 20px;
+        }
+    .navbar .menu {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .dealer-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .dealer-images {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .review-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .brands {
+        gap: 5px;
+    }
+
+    .service-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .contact-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text-input input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .video-container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .video-container iframe {
+        width: 100%;
+        height: auto;
+    }
+
+    .footer-container {
+        padding: 10px;
+        text-align: center;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 480px) {
+    body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            width: 138%;
+        }
+
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 20px;
+        }
+    .navbar .menu li {
+        margin: 0 5px;
+    }
+
+    .dealer-info {
+        padding: 10px;
+    }
+
+    .dealer-details h1 {
+        font-size: 22px;
+    }
+
+    .dealer-images img {
+        width: 100%;
+        height: auto;
+    }
+
+    .tyre-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .tyre-image img {
+        left: 0;
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .tyre-info {
+        max-width: 100%;
+    }
+
+    .footer-logo-social h2 {
+        font-size: 20px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">TyrePlex</div>
+            <ul class="menu">
+                <li><a href="#">Car Tyres</a></li>
+                <li><a href="#">Bike Tyres</a></li>
+                <li><a href="#">Tyre Pressure</a></li>
+                <li><a href="#">Commercial Tyres</a></li>
+                <li><a href="#">Accessories</a></li>
+                <li><a href="#">More</a></li>
+            </ul>
+            <div class="login">Login</div>
+        </nav>
+    </header>
+
+    <section class="dealer-info">
+        <div class="dealer-details">
+            <h1>SHREE HEMKUNT TYRES AND SERVICES</h1>
+            <p class="rating">4.9 <span>(2278 Reviews)</span></p>
+            <p class="address">
+                <strong>Address:</strong> PLOT NUMBER 99 GROUND FLOOR CISF CAMPUS ROAD, AHINSA KHAND-2 INDIRAPURAM, Ghaziabad, Uttar Pradesh, 201014
+            </p>
+            <p class="timing"><strong>Open:</strong> Monday to Sunday - 10:00AM to 8:00PM</p>
+            <button class="get-directions">Get Directions</button>
+        </div>
+        <div class="dealer-images">
+            <img src="https://lh3.googleusercontent.com/places/AAcXr8o52JCZ4eDqDhBAQRIDHcYnN1kNMCKBI27KOEuPvQk0C546Zftc9kpHLdW6kmlnbf1gGd7fSGfpctnLspNCfEpye7Rrmwrp094=s1600-w300" alt="Dealer Image">
+            <img src="https://lh3.googleusercontent.com/places/AAcXr8ryfQqAWHDmAPXAuK5o1Sk81OiWbLXHHNRm8OTBLFZE41-3arlK-Q7aMXjXp106o8p8Dca6OTnSTynW6ykkg86zy1-j4JRkpXI=s1600-w300" alt="Dealer Image">
+        </div>
+    </section>
+
+    <section class="reviews">
+        <h2>Google Reviews</h2>
+        <div class="review-card">
+            <div class="review-header">
+                <img src="https://lh3.googleusercontent.com/a/AATXAJwZ5yHTyhlbUnanuJwLGdscP95OtAMhFGiAD8Bf=s128-c0x00000000-cc-rp-mo" alt="Md Nasir">
+                <h3>Md Nasir</h3>
+            </div>
+            <p>Excellent service from start to finish. 100% satisfaction with the job, professionalism and overall service...</p>
+        </div>
+        <div class="review-card">
+            <div class="review-header">
+                <img src="https://lh3.googleusercontent.com/a/AATXAJxi1FTLTnIbF-wcCFLUqffCFFV07qiTPPBbLVaO=s128-c0x00000000-cc-rp-mo" alt="Rohit Bhati">
+                <h3>Rohit Bhati</h3>
+            </div>
+            <p>Went for Tyre change. Ultimate service by shoppe boys...</p>
+        </div>
+        <div class="review-card">
+            <div class="review-header">
+                <img src="https://lh3.googleusercontent.com/a/AATXAJwahszZQxSMoUOJ3FOQwAgtMOeWI7bFaQnSRl1a=s128-c0x00000000-cc-rp-mo" alt="Pradeep Kumar">
+                <h3>Pradeep Kumar</h3>
+            </div>
+            <p>Best tyre shop in Indirapuram. Good dealing with customer...</p>
+        </div>
+    </section>
+    
+
+    <section class="deals">
+        <h2>Deals in</h2>
+        <div class="brands">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt-SkoWbll8kKYpM4-yvpI0rvYp7AqGEclnw&s" alt="Kenda">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg2cFN-oLkTCMg2U8H35SbVVoJ9yM1M8glAQ&s" alt="Metzeler">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT42Ed_ABADVtDQk057ZkGJWV5r4QWKnkum1Q&s" alt="Kumho">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9xHxBI1GSU8dJqkNtTiHj0Ew5BV6sKY70Ow&s" alt="Nexen">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf8NRpchwZjI03ueb_VG_yfK8V8Kcp15CTSw&s" alt="Vredestein">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjWdtJPHhmD9ANGoPL75LdkGmPU6LoAW1TYA&s" alt="MRL">
+        </div>
+    </section>
+
+    <section class="services">
+        <h2>Services offered by this dealer</h2>
+        <div class="service-card">
+            <img src="https://cdn.tyreplex.net/images/wheel-alignment-bal.png?tr=w-100" alt="Wheel Balancing">
+            <p class="service-title">Wheel Balancing</p>
+            <button class="book-now">Book Now</button>
+        </div>
+        <div class="service-card">
+            <img src="https://cdn.tyreplex.net/images/wheel-alignment.png?tr=w-100" alt="Wheel Alignment">
+            <p class="service-title">Wheel Alignment</p>
+            <button class="book-now">Book Now</button>
+        </div>
+    </section>
+    
+    <section class="tyres">
+        <h2>Tyres sold by this Dealer</h2>
+        <div class="tyre-controls">
+            <div class="filter">
+                <label for="filter-by">Filter By</label>
+                <select id="filter-by">
+                    <option value="popular">Most Popular</option>
+                    <option value="price_low">Price Low to High</option>
+                    <option value="price_high">Price High to Low</option>
+                </select>
+            </div>
+            <a href="#" class="advanced-filter">Advanced</a>
+        </div>
+        <div class="tyre-grid">
+            <!-- Repeat this block for each tyre -->
+            <div class="tyre-card">
+                <div class="tyre-info">
+                    <h3 class="tyre-brand">apollo</h3>
+                    <p class="tyre-model">AMAZER 4G LIFE</p>
+                    <p class="tyre-size">145/80 R12</p>
+                    <p class="tyre-reviews"><span class="review-rating">★4</span> 321 Reviews</p>
+                    <p class="tyre-price">₹ 3,136</p>
+                    <p class="tyre-offer">Offer available</p>
+                    <p class="tyre-type">Tube Type</p>
+                </div>
+                <div class="tyre-image">
+                    <img src="https://cdn.tyreplex.net/uploads/images/tyre_model/original/apollo/amazer-4g-life/img_main.png?v=2385909&tr=w-178,q-78,q-60" alt="Tyre Image">
+                    <div class="warranty-badge">5 Year Warranty</div>
+                </div>
+            </div>
+            <!-- End Repeat -->
+
+            <div class="tyre-card">
+                <div class="tyre-info">
+                    <h3 class="tyre-brand">Michelin</h3>
+                    <p class="tyre-model">Energy XM2</p>
+                    <p class="tyre-size">195/65 R15</p>
+                    <p class="tyre-reviews"><span class="review-rating">★4.5</span> 400 Reviews</p>
+                    <p class="tyre-price">₹ 5,600</p>
+                    <p class="tyre-offer">Offer available</p>
+                    <p class="tyre-type">Tubeless</p>
+                </div>
+                <div class="tyre-image">
+                    <img src="https://cdn.tyreplex.net/uploads/images/tyre_model/original/apollo/amazer-4g-life/img_main.png?v=2385909&tr=w-178,q-78,q-60" alt="Tyre Image">
+                    <div class="warranty-badge">6 Year Warranty</div>
+                </div>
+            </div>
+            
+            <div class="tyre-card">
+                <div class="tyre-info">
+                    <h3 class="tyre-brand">Bridgestone</h3>
+                    <p class="tyre-model">B290</p>
+                    <p class="tyre-size">185/70 R14</p>
+                    <p class="tyre-reviews"><span class="review-rating">★4.2</span> 289 Reviews</p>
+                    <p class="tyre-price">₹ 4,200</p>
+                    <p class="tyre-offer">Offer available</p>
+                    <p class="tyre-type">Tubeless</p>
+                </div>
+                <div class="tyre-image">
+                    <img src="https://cdn.tyreplex.net/uploads/images/tyre_model/original/apollo/amazer-4g-life/img_main.png?v=2385909&tr=w-178,q-78,q-60" alt="Tyre Image">
+                    <div class="warranty-badge">5 Year Warranty</div>
+                </div>
+            </div>
+            
+            <div class="tyre-card">
+                <div class="tyre-info">
+                    <h3 class="tyre-brand">Goodyear</h3>
+                    <p class="tyre-model">Assurance TripleMax 2</p>
+                    <p class="tyre-size">175/65 R14</p>
+                    <p class="tyre-reviews"><span class="review-rating">★4.3</span> 150 Reviews</p>
+                    <p class="tyre-price">₹ 4,100</p>
+                    <p class="tyre-offer">Offer available</p>
+                    <p class="tyre-type">Tubeless</p>
+                </div>
+                <div class="tyre-image">
+                    <img src="https://cdn.tyreplex.net/uploads/images/tyre_model/original/apollo/amazer-4g-life/img_main.png?v=2385909&tr=w-178,q-78,q-60" alt="Tyre Image">
+                    <div class="warranty-badge">5 Year Warranty</div>
+                </div>
+            </div>
+            
+            <div class="tyre-card">
+                <div class="tyre-info">
+                    <h3 class="tyre-brand">CEAT</h3>
+                    <p class="tyre-model">Milaze X3</p>
+                    <p class="tyre-size">145/80 R12</p>
+                    <p class="tyre-reviews"><span class="review-rating">★4.0</span> 200 Reviews</p>
+                    <p class="tyre-price">₹ 3,200</p>
+                    <p class="tyre-offer">Offer available</p>
+                    <p class="tyre-type">Tube Type</p>
+                </div>
+                <div class="tyre-image">
+                    <img src="https://cdn.tyreplex.net/uploads/images/tyre_model/original/apollo/amazer-4g-life/img_main.png?v=2385909&tr=w-178,q-78,q-60" alt="Tyre Image">
+                    <div class="warranty-badge">5 Year Warranty</div>
+                </div>
+            </div>
+            
+            <div class="tyre-card">
+                <div class="tyre-info">
+                    <h3 class="tyre-brand">Yokohama</h3>
+                    <p class="tyre-model">Earth-1 E400</p>
+                    <p class="tyre-size">185/70 R14</p>
+                    <p class="tyre-reviews"><span class="review-rating">★4.7</span> 450 Reviews</p>
+                    <p class="tyre-price">₹ 5,100</p>
+                    <p class="tyre-offer">Offer available</p>
+                    <p class="tyre-type">Tubeless</p>
+                </div>
+                <div class="tyre-image">
+                    <img src="https://cdn.tyreplex.net/uploads/images/tyre_model/original/apollo/amazer-4g-life/img_main.png?v=2385909&tr=w-178,q-78,q-60" alt="Tyre Image">
+                    <div class="warranty-badge">6 Year Warranty</div>
+                </div>
+            </div>
+            
+            <div class="tyre-card">
+                <div class="tyre-info">
+                    <h3 class="tyre-brand">MRF</h3>
+                    <p class="tyre-model">ZVTS</p>
+                    <p class="tyre-size">155/80 R13</p>
+                    <p class="tyre-reviews"><span class="review-rating">★4.4</span> 320 Reviews</p>
+                    <p class="tyre-price">₹ 3,800</p>
+                    <p class="tyre-offer">Offer available</p>
+                    <p class="tyre-type">Tube Type</p>
+                </div>
+                <div class="tyre-image">
+                    <img src="https://cdn.tyreplex.net/uploads/images/tyre_model/original/apollo/amazer-4g-life/img_main.png?v=2385909&tr=w-178,q-78,q-60" alt="Tyre Image">
+                    <div class="warranty-badge">5 Year Warranty</div>
+                </div>
+            </div>
+            
+            <div class="tyre-card">
+                <div class="tyre-info">
+                    <h3 class="tyre-brand">Apollo</h3>
+                    <p class="tyre-model">Alnac 4G</p>
+                    <p class="tyre-size">175/65 R15</p>
+                    <p class="tyre-reviews"><span class="review-rating">★4.1</span> 250 Reviews</p>
+                    <p class="tyre-price">₹ 4,500</p>
+                    <p class="tyre-offer">Offer available</p>
+                    <p class="tyre-type">Tubeless</p>
+                </div>
+                <div class="tyre-image">
+                    <img src="https://cdn.tyreplex.net/uploads/images/tyre_model/original/apollo/amazer-4g-life/img_main.png?v=2385909&tr=w-178,q-78,q-60" alt="Tyre Image">
+                    <div class="warranty-badge">5 Year Warranty</div>
+                </div>
+            </div>
+            
+            <div class="tyre-card">
+                <div class="tyre-info">
+                    <h3 class="tyre-brand">Continental</h3>
+                    <p class="tyre-model">Conti ComfortContact CC5</p>
+                    <p class="tyre-size">195/60 R15</p>
+                    <p class="tyre-reviews"><span class="review-rating">★4.6</span> 290 Reviews</p>
+                    <p class="tyre-price">₹ 5,300</p>
+                    <p class="tyre-offer">Offer available</p>
+                    <p class="tyre-type">Tubeless</p>
+                </div>
+                <div class="tyre-image">
+                    <img src="https://cdn.tyreplex.net/uploads/images/tyre_model/original/apollo/amazer-4g-life/img_main.png?v=2385909&tr=w-178,q-78,q-60" alt="Tyre Image">
+                    <div class="warranty-badge">6 Year Warranty</div>
+                </div>
+            </div>
+            
+            <div class="tyre-card">
+                <div class="tyre-info">
+                    <h3 class="tyre-brand">JK Tyre</h3>
+                    <p class="tyre-model">VECTRA</p>
+                    <p class="tyre-size">165/80 R14</p>
+                    <p class="tyre-reviews"><span class="review-rating">★4.3</span> 370 Reviews</p>
+                    <p class="tyre-price">₹ 3,900</p>
+                    <p class="tyre-offer">Offer available</p>
+                    <p class="tyre-type">Tubeless</p>
+                </div>
+                <div class="tyre-image">
+                    <img src="https://cdn.tyreplex.net/uploads/images/tyre_model/original/apollo/amazer-4g-life/img_main.png?v=2385909&tr=w-178,q-78,q-60" alt="Tyre Image">
+                    <div class="warranty-badge">5 Year Warranty</div>
+                </div>
+            </div>
+            
+            <div class="tyre-card">
+                <div class="tyre-info">
+                    <h3 class="tyre-brand">Pirelli</h3>
+                    <p class="tyre-model">Cinturato P6</p>
+                    <p class="tyre-size">205/55 R16</p>
+                    <p class="tyre-reviews"><span class="review-rating">★4.8</span> 150 Reviews</p>
+                    <p class="tyre-price">₹ 7,200</p>
+                    <p class="tyre-offer">Offer available</p>
+                    <p class="tyre-type">Tubeless</p>
+                </div>
+                <div class="tyre-image">
+                    <img src="https://cdn.tyreplex.net/uploads/images/tyre_model/original/apollo/amazer-4g-life/img_main.png?v=2385909&tr=w-178,q-78,q-60" alt="Tyre Image">
+                    <div class="warranty-badge">6 Year Warranty</div>
+                </div>
+            </div>
+            <div class="tyre-card">
+                <div class="tyre-info">
+                    <h3 class="tyre-brand">Falken</h3>
+                    <p class="tyre-model">Sincera SN832i</p>
+                    <p class="tyre-size">165/70 R14</p>
+                    <p class="tyre-reviews"><span class="review-rating">★4.5</span> 310 Reviews</p>
+                    <p class="tyre-price">₹ 4,400</p>
+                    <p class="tyre-offer">Offer available</p>
+                    <p class="tyre-type">Tubeless</p>
+                </div>
+                <div class="tyre-image">
+                    <img src="https://cdn.tyreplex.net/uploads/images/tyre_model/original/apollo/amazer-4g-life/img_main.png?v=2385909&tr=w-178,q-78,q-60" alt="Tyre Image">
+                    <div class="warranty-badge">5 Year Warranty</div>
+                </div>
+            </div>
+            
+            
+        </div>
+        <button class="view-more">View more</button>
+    </section>
+    
+
+    <footer>
+        <!-- Payment Modes Section -->
+        <section class="payment-modes">
+            <h2>Payment Mode</h2>
+            <ul>
+                <li>Deposit to Account</li>
+                <li>Credit Card/Debit Card</li>
+                <li>Wallets (PayTM/PhonePe/Amazon etc.)</li>
+                <li>Net Banking</li>
+                <li>UPI</li>
+            </ul>
+        </section>
+    
+        <!-- Contact Section -->
+        <section class="contact">
+            <div class="contact-content">
+                <div class="text-input">
+                    <h2>Have a question about Tyres?</h2>
+                    <input type="text" placeholder="Ask or search your question" id="question-input">
+                    <button onclick="submitQuestion()">Submit</button>
+                </div>
+                <div>
+                    <iframe width="603" height="280" src="https://www.youtube.com/embed/bgVpc1PXDEw" title="MRF ZLX Tyres | Virat Kohli | The only comfort radials that give you long life | You can bet on it" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                
+        </section>
+        
+    
+        <!-- Footer Info -->
+         <div class="footer-container">
+        <!-- Logo and Social Media Icons -->
+        <div class="footer-logo-social">
+            <h2>Tyre<span>Plex</span></h2>
+            <div class="social-icons">
+                <a href="#"><img src="path-to-facebook-icon.png" alt="Facebook"></a>
+                <a href="#"><img src="path-to-instagram-icon.png" alt="Instagram"></a>
+            </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="footer-links">
+            <a href="#">Who We Are</a>
+            <a href="#">Are you a Tyre Dealer?</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of use</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Career</a>
+            <a href="#">Shipping & Return Policy</a>
+        </div>
+
+        <!-- Footer Info -->
+        <div class="footer-info">
+            <p>©2024 TyrePlex Technologies & Commerce Pvt. Ltd. All Rights Reserved.</p>
+        </div>
+    </div>
+    </footer>
+    
+</body>
+</html>
